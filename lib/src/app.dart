@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:ito_laboratorio_bdatos/src/screens/home_page.dart';
 import 'package:ito_laboratorio_bdatos/src/screens/login_page.dart';
 
 class MyApp extends StatelessWidget {
@@ -7,6 +8,7 @@ class MyApp extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return MaterialApp(
+      debugShowCheckedModeBanner: false,
       title: 'ITO Laboratorio de Base de Datos',
       initialRoute: '/',
       theme: ThemeData(
@@ -16,6 +18,7 @@ class MyApp extends StatelessWidget {
       ),
       routes: {
         '/': (BuildContext context) => const LoginPage(),
+        '/homePage': (BuildContext context) => const HomePage(),
       },
     );
   }
