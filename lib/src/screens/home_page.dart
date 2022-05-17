@@ -8,9 +8,10 @@ class HomePage extends StatefulWidget {
 }
 
 class _HomePageState extends State<HomePage> {
-  List<String> _listaDeOpciones = <String>["27-01-2022 al 20-06-2022", "Opcion 2", 'Opcion 3'];
-  var _lista = ['carro', 'casa', 'vaca'];
-  String _vista = 'Seleccione una opcion';
+  List<String> _listaSemestres = <String>["27-01-2022 AL 20-06-2022", "Opcion 2", 'Opcion 3'];
+  List<String> _listaCarreras = <String>["Todas las carreras", "Ingeniería en Sistemas Computacionales", 'Opcion 3'];
+  String _vista = 'Seleccione una opción';
+  String _vista2 = 'Seleccione una opción';
 
   @override
   Widget build(BuildContext context) {
@@ -22,8 +23,6 @@ class _HomePageState extends State<HomePage> {
           backgroundColor: const Color(0xFF01325E),
           //centerTitle: true,
           title: Row(
-            //mainAxisSize: MainAxisSize.min,
-            //mainAxisAlignment: MainAxisAlignment.center,
             crossAxisAlignment: CrossAxisAlignment.center,
             children: [
               const Expanded(
@@ -88,16 +87,16 @@ class _HomePageState extends State<HomePage> {
                       color: const Color(0xFFBAD1FF),
                     ),
                     child: const Text(
-                      'SEMESTRE:',
+                      'Semestre:',
                       textAlign: TextAlign.center,
                       style: TextStyle(
                         fontSize: 18,
                       ),
                     ),
                   ),
+                  const SizedBox(width: 20,),
                   DropdownButton(
-                    dropdownColor: const Color(0xFFBAD1FF),
-                    items: _listaDeOpciones.map((String a){
+                    items: _listaSemestres.map((String a){
                       return DropdownMenuItem(
                         value: a,
                           child: Text(a));
@@ -108,12 +107,65 @@ class _HomePageState extends State<HomePage> {
                       })
                     },
                     hint: Text(_vista),
+                  ),
+                  const SizedBox(width: 40,),
+                  Container(
+                    padding: const EdgeInsets.only(left: 20, right: 20, top: 10, bottom: 10),
+                    decoration: BoxDecoration(
+                      borderRadius: BorderRadius.circular(15.0),
+                      color: const Color(0xFFBAD1FF),
+                    ),
+                    child: const Text(
+                      'Filtrar:',
+                      textAlign: TextAlign.center,
+                      style: TextStyle(
+                        fontSize: 18,
+                      ),
+                    ),
+                  ),
+                  const SizedBox(width: 20,),
+                  DropdownButton(
+                    items: _listaCarreras.map((String b){
+                      return DropdownMenuItem(
+                          value: b,
+                          child: Text(b));
+                    }).toList(),
+                    onChanged: (value) => {
+                      setState((){
+                        _vista2 = value.toString();
+                      })
+                    },
+                    hint: Text(_vista2),
+                  ),
+                  //const SizedBox(width: 580,),
+                  const SizedBox(width: 180,),
+                  ElevatedButton(
+                    style: _elevatedButtonStyle(context),
+                    onPressed: (){},
+                    child: const Text('Inventario')
+                  ),
+                  const SizedBox(width: 40,),
+                  ElevatedButton(
+                      style: _elevatedButtonStyle(context),
+                      onPressed: (){},
+                      child: const Text('Agregar práctica')
                   )
                 ],
               )
             ],
           ),
         ),
+      ),
+    );
+  }
+
+  ButtonStyle _elevatedButtonStyle(BuildContext context) {
+    return ElevatedButton.styleFrom(
+      textStyle: const TextStyle(fontSize: 20),
+      primary: Theme.of(context).primaryColor,
+      padding: const EdgeInsets.only(top:15, bottom: 15, left: 30, right: 30),
+      shape: RoundedRectangleBorder(
+        borderRadius: BorderRadius.circular(20.0),
       ),
     );
   }
