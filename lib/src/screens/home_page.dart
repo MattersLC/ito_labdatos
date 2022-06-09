@@ -174,7 +174,7 @@ class _HomePageState extends State<HomePage> {
                       ),
                       ElevatedButton(
                           style: _elevatedButtonStyle(context),
-                          onPressed: () {},
+                          onPressed: () => _addPractice(context),
                           child: const Text('Agregar práctica'))
                     ],
                   ),
@@ -417,5 +417,9 @@ class _HomePageState extends State<HomePage> {
         borderRadius: BorderRadius.circular(20.0),
       ),
     );
+  }
+
+  void _addPractice(BuildContext context) {
+    Navigator.of(context).pushNamed('/nuevaPracticaPage');
   }
 }
