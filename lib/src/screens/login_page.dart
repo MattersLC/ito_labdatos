@@ -117,7 +117,7 @@ class _LoginPageState extends State<LoginPage> {
                                       children: [
                                         Container(
                                           width: 220,
-                                          height: 40,
+                                          height: 60,
                                           alignment: Alignment.center,
                                           padding: const EdgeInsets.all(5.0),
                                           decoration: BoxDecoration(
@@ -144,7 +144,7 @@ class _LoginPageState extends State<LoginPage> {
                                       children: <Widget>[
                                         Container(
                                           width: 250,
-                                          height: 40,
+                                          height: 60,
                                           alignment: Alignment.center,
                                           padding: const EdgeInsets.all(10.0),
                                           decoration: BoxDecoration(
@@ -152,7 +152,22 @@ class _LoginPageState extends State<LoginPage> {
                                                 BorderRadius.circular(15.0),
                                             color: Colors.white,
                                           ),
-                                          child: TextFormField(),
+                                          child: TextFormField(
+                                            style: const TextStyle(fontSize: 20),
+                                            decoration: const InputDecoration(
+                                              hintText: 'Ej: 21160001'
+                                            ),
+                                            autovalidateMode: AutovalidateMode.onUserInteraction,
+                                            validator: (value) {
+                                              if (value == null || value.isEmpty) {
+                                                return 'Por favor ingresa tu usuario.';
+                                              } else if (value.contains('@') ||
+                                                  value.contains('{')) {
+                                                return 'No puedes usar caractéres especiales.';
+                                              }
+                                              return null;
+                                            },
+                                          ),
                                         )
                                       ],
                                     ),
@@ -169,7 +184,7 @@ class _LoginPageState extends State<LoginPage> {
                                       children: [
                                         Container(
                                           width: 220,
-                                          height: 40,
+                                          height: 60,
                                           alignment: Alignment.center,
                                           padding: const EdgeInsets.all(5.0),
                                           decoration: BoxDecoration(
@@ -196,7 +211,7 @@ class _LoginPageState extends State<LoginPage> {
                                       children: <Widget>[
                                         Container(
                                           width: 250,
-                                          height: 40,
+                                          height: 60,
                                           alignment: Alignment.center,
                                           padding: const EdgeInsets.all(10.0),
                                           decoration: BoxDecoration(
@@ -204,7 +219,19 @@ class _LoginPageState extends State<LoginPage> {
                                                 BorderRadius.circular(15.0),
                                             color: Colors.white,
                                           ),
-                                          child: TextFormField(),
+                                          child: TextFormField(
+                                            style: const TextStyle(fontSize: 20),
+                                            decoration: const InputDecoration(
+                                                hintText: 'Ej: 123456'
+                                            ),
+                                            autovalidateMode: AutovalidateMode.onUserInteraction,
+                                            validator: (value) {
+                                              if (value == null || value.isEmpty) {
+                                                return 'Por favor ingresa tu contraseña.';
+                                              }
+                                              return null;
+                                            },
+                                          ),
                                         )
                                       ],
                                     ),
