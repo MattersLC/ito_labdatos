@@ -9,11 +9,6 @@ class NewPractice extends StatefulWidget {
 }
 
 class _NewPracticeState extends State<NewPractice> {
-  final List<String> _listaFecha = <String>[
-    '27-01-2022 al 20-06-2022',
-    '27-01-2021 al 20-06-2021',
-    '27-01-2020 al 20-06-2020',
-  ];
   final List<String> _listaDocentes = <String>[
     'Benitez Quecha Claribel',
     'Castañón Olguín Eduardo',
@@ -85,7 +80,7 @@ class _NewPracticeState extends State<NewPractice> {
   String _vistaHasta = 'Seleccione';
   late DateTime datel;
   late String _chosenVal;
-  DateTime selectedDate = DateTime.now();
+  /*DateTime selectedDate = DateTime.now();
   Future<Null> _selectDate(BuildContext context) async {
     final DateTime? picked = await showDatePicker(
         context: context,
@@ -96,7 +91,7 @@ class _NewPracticeState extends State<NewPractice> {
       setState(() {
         selectedDate = picked;
       });
-  }
+  }*/
 
   //var _currentSelectedDate;
   /*void callDatePicker() async {
@@ -207,11 +202,8 @@ class _NewPracticeState extends State<NewPractice> {
                             )
                           ]),
                           const SizedBox(
-                            height: 100,
+                            height: 70,
                           ),
-
-
-
                           Row(
                             children: <Widget>[
                               Column(
@@ -377,8 +369,7 @@ class _NewPracticeState extends State<NewPractice> {
                                         ),
                                       ],
                                     ),
-                                  ),
-                                  const SizedBox(height: 20,),
+                                  )
                                 ],
                               ),
                               Column(
@@ -591,9 +582,8 @@ class _NewPracticeState extends State<NewPractice> {
                               )
                             ],
                           ),
-
                           const SizedBox(
-                            height: 100,
+                            height: 70,
                           ),
                           ElevatedButton(
                               style: _elevatedButtonStyle(context),
@@ -601,7 +591,7 @@ class _NewPracticeState extends State<NewPractice> {
                               child: const Text('AGREGAR PRÁCTICA')
                           ),
                           const SizedBox(
-                            height: 70,
+                            height: 40,
                           ),
                         ],
                       ),
