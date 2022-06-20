@@ -209,365 +209,389 @@ class _NewPracticeState extends State<NewPractice> {
                           const SizedBox(
                             height: 100,
                           ),
-                          Row(
-                            mainAxisSize: MainAxisSize.max,
-                            mainAxisAlignment: MainAxisAlignment.start,
-                            children: <Widget>[
-                              Container(
-                                padding: const EdgeInsets.only(left: 20, right: 20, top: 10, bottom: 10),
-                                width: 120,
-                                decoration: BoxDecoration(
-                                  borderRadius: BorderRadius.circular(15.0),
-                                  color: const Color(0xFF01325E),
 
-                                ),
-                                child: const Text(
-                                  'Fecha',
-                                  style: TextStyle(
-                                    fontSize: 18,
-                                    color: Colors.white,
-                                  ),
-                                  textAlign: TextAlign.center,
-                                ),
-                              ),
-                              const SizedBox(
-                                width: 15,
-                              ),
-                              DropdownButton<DateTime>(
-                                hint: Text(_vistaFecha),
-                                items: [
-                                  'Click aquí para seleccionar una fecha'
-                                ].map((e) => DropdownMenuItem<DateTime>(child: Text(e))).toList(),
-                                onChanged: (DateTime? value) {
-                                  setState(() {
-                                    showDatePicker(
-                                        context: context,
-                                        initialDate: DateTime.now(),
-                                        firstDate: DateTime(2022),
-                                        lastDate: DateTime(2027))
-                                        .then((date) {
-                                      setState(() {
-                                        datel = date!;
-                                      });
-                                    });
-                                  });
-                                }),
-                              /*DropdownButton(
-                                items: _listaFecha.map((String a) {
-                                  return DropdownMenuItem(
-                                      value: a, child: Text(a));
-                                }).toList(),
-                                onChanged: (text) => {
-                                  setState(() {
-                                    _vistaFecha = text.toString();
-                                  })
-                                },
-                                hint: Text(_vistaFecha),
-                              ),*/
-                              const SizedBox(
-                                width: 160,
-                              ),
-                              Container(
-                                padding: const EdgeInsets.only(left: 20, right: 20, top: 10, bottom: 10),
-                                width: 120,
-                                decoration: BoxDecoration(
-                                  borderRadius: BorderRadius.circular(15.0),
-                                  color: const Color(0xFF01325E),
-                                ),
-                                child: const Text(
-                                  'Docente',
-                                  style: TextStyle(
-                                    fontSize: 18,
-                                    color: Colors.white,
-                                  ),
-                                  textAlign: TextAlign.center,
-                                ),
-                              ),
-                              const SizedBox(
-                                width: 15,
-                              ),
-                              DropdownButton(
-                                items: _listaDocentes.map((String a) {
-                                  return DropdownMenuItem(
-                                      value: a, child: Text(a));
-                                }).toList(),
-                                onChanged: (text) => {
-                                  setState(() {
-                                    _vistaDocente = text.toString();
-                                  })
-                                },
-                                hint: Text(_vistaDocente),
-                              ),
-                            ],
-                          ),
-                          const SizedBox(
-                            height: 30,
-                          ),
+
+
                           Row(
-                            mainAxisSize: MainAxisSize.max,
-                            mainAxisAlignment: MainAxisAlignment.start,
                             children: <Widget>[
-                              Container(
-                                padding: const EdgeInsets.only(left: 20, right: 20, top: 10, bottom: 10),
-                                width: 120,
-                                decoration: BoxDecoration(
-                                  borderRadius: BorderRadius.circular(15.0),
-                                  color: const Color(0xFF01325E),
-                                ),
-                                child: const Text(
-                                  'Carrera',
-                                  style: TextStyle(
-                                    fontSize: 18,
-                                    color: Colors.white,
+                              Column(
+                                children: <Widget>[
+                                  Container(
+                                    width: 500,
+                                    child: Row(
+                                      children: [
+                                        Container(
+                                          padding: const EdgeInsets.only(left: 20, right: 20, top: 10, bottom: 10),
+                                          width: 120,
+                                          decoration: BoxDecoration(
+                                            borderRadius: BorderRadius.circular(15.0),
+                                            color: const Color(0xFF01325E),
+                                          ),
+                                          child: const Text(
+                                            'Fecha',
+                                            style: TextStyle(
+                                              fontSize: 18,
+                                              color: Colors.white,
+                                            ),
+                                            textAlign: TextAlign.center,
+                                          ),
+                                        ),
+                                        const SizedBox(
+                                          width: 15,
+                                        ),
+                                        DropdownButton<DateTime>(
+                                            hint: Text(_vistaFecha),
+                                            items: [
+                                              'Click aquí para seleccionar una fecha'
+                                            ].map((e) => DropdownMenuItem<DateTime>(child: Text(e))).toList(),
+                                            onChanged: (DateTime? value) {
+                                              setState(() {
+                                                showDatePicker(
+                                                    context: context,
+                                                    initialDate: DateTime.now(),
+                                                    firstDate: DateTime(2022),
+                                                    lastDate: DateTime(2027))
+                                                    .then((date) {
+                                                  setState(() {
+                                                    datel = date!;
+                                                  });
+                                                });
+                                              });
+                                            }),
+                                      ],
+                                    ),
                                   ),
-                                  textAlign: TextAlign.center,
-                                ),
-                              ),
-                              const SizedBox(
-                                width: 15,
-                              ),
-                              DropdownButton(
-                                items: _listaCarrera.map((String a) {
-                                  return DropdownMenuItem(
-                                      value: a, child: Text(a));
-                                }).toList(),
-                                onChanged: (text) => {
-                                  setState(() {
-                                    _vistaCarrera = text.toString();
-                                  })
-                                },
-                                hint: Text(_vistaCarrera),
-                              ),
-                              const SizedBox(
-                                width: 59,
-                              ),
-                              Container(
-                                padding: const EdgeInsets.only(
-                                    left: 20, right: 20, top: 10, bottom: 10),
-                                width: 120,
-                                decoration: BoxDecoration(
-                                  borderRadius: BorderRadius.circular(15.0),
-                                  color: const Color(0xFF01325E),
-                                ),
-                                child: const Text(
-                                  'Alumnos',
-                                  style: TextStyle(
-                                      fontSize: 18,
-                                      color: Colors.white,
+                                  const SizedBox(height: 20,),
+                                  Container(
+                                    width: 500,
+                                    child: Row(
+                                      children: [
+                                        Container(
+                                          padding: const EdgeInsets.only(left: 20, right: 20, top: 10, bottom: 10),
+                                          width: 120,
+                                          decoration: BoxDecoration(
+                                            borderRadius: BorderRadius.circular(15.0),
+                                            color: const Color(0xFF01325E),
+                                          ),
+                                          child: const Text(
+                                            'Carrera',
+                                            style: TextStyle(
+                                              fontSize: 18,
+                                              color: Colors.white,
+                                            ),
+                                            textAlign: TextAlign.center,
+                                          ),
+                                        ),
+                                        const SizedBox(
+                                          width: 15,
+                                        ),
+                                        DropdownButton(
+                                          items: _listaCarrera.map((String a) {
+                                            return DropdownMenuItem(
+                                                value: a, child: Text(a));
+                                          }).toList(),
+                                          onChanged: (text) => {
+                                            setState(() {
+                                              _vistaCarrera = text.toString();
+                                            })
+                                          },
+                                          hint: Text(_vistaCarrera),
+                                        ),
+                                      ],
+                                    ),
                                   ),
-                                  textAlign: TextAlign.center,
-                                ),
-                              ),
-                              const SizedBox(
-                                width: 15,
+                                  const SizedBox(height: 20,),
+                                  Container(
+                                    width: 500,
+                                    child: Row(
+                                      children: [
+                                        Container(
+                                          padding: const EdgeInsets.only(left: 20, right: 20, top: 10, bottom: 10),
+                                          width: 120,
+                                          decoration: BoxDecoration(
+                                            borderRadius: BorderRadius.circular(15.0),
+                                            color: const Color(0xFF01325E),
+                                          ),
+                                          child: const Text(
+                                            'Materia',
+                                            style: TextStyle(
+                                              fontSize: 18,
+                                              color: Colors.white,
+                                            ),
+                                            textAlign: TextAlign.center,
+                                          ),
+                                        ),
+                                        const SizedBox(
+                                          width: 15,
+                                        ),
+                                        DropdownButton(
+                                          items: _listaMateria.map((String a) {
+                                            return DropdownMenuItem(
+                                                value: a, child: Text(a));
+                                          }).toList(),
+                                          onChanged: (text) => {
+                                            setState(() {
+                                              _vistaMateria = text.toString();
+                                            })
+                                          },
+                                          hint: Text(_vistaMateria),
+                                        ),
+                                      ],
+                                    ),
+                                  ),
+                                  const SizedBox(height: 20,),
+                                  Container(
+                                    width: 500,
+                                    child: Row(
+                                      children: [
+                                        Container(
+                                          padding: const EdgeInsets.only(left: 20, right: 20, top: 10, bottom: 10),
+                                          width: 120,
+                                          decoration: BoxDecoration(
+                                            borderRadius: BorderRadius.circular(15.0),
+                                            color: const Color(0xFF01325E),
+                                          ),
+                                          child: const Text(
+                                            'Grupo',
+                                            style: TextStyle(
+                                              fontSize: 18,
+                                              color: Colors.white,
+                                            ),
+                                            textAlign: TextAlign.center,
+                                          ),
+                                        ),
+                                        const SizedBox(
+                                          width: 15,
+                                        ),
+                                        DropdownButton(
+                                          items: _listaGrupos.map((String a) {
+                                            return DropdownMenuItem(
+                                                value: a, child: Text(a));
+                                          }).toList(),
+                                          onChanged: (text) => {
+                                            setState(() {
+                                              _vistaGrupo = text.toString();
+                                            })
+                                          },
+                                          hint: Text(_vistaGrupo),
+                                        ),
+                                      ],
+                                    ),
+                                  ),
+                                  const SizedBox(height: 20,),
+                                ],
                               ),
                               Column(
+                                mainAxisAlignment: MainAxisAlignment.start,
                                 crossAxisAlignment: CrossAxisAlignment.start,
                                 children: <Widget>[
                                   Container(
-                                    width: 250,
-                                    height: 40,
-                                    alignment: Alignment.center,
-                                    padding: const EdgeInsets.all(10.0),
-                                    decoration: BoxDecoration(
-                                      borderRadius:
-                                      BorderRadius.circular(15.0),
-                                      color: Colors.white,
+                                    width: 420,
+                                    child: Row(
+                                      children: [
+                                        Container(
+                                          padding: const EdgeInsets.only(left: 20, right: 20, top: 10, bottom: 10),
+                                          width: 120,
+                                          decoration: BoxDecoration(
+                                            borderRadius: BorderRadius.circular(15.0),
+                                            color: const Color(0xFF01325E),
+                                          ),
+                                          child: const Text(
+                                            'Docente',
+                                            style: TextStyle(
+                                              fontSize: 18,
+                                              color: Colors.white,
+                                            ),
+                                            textAlign: TextAlign.center,
+                                          ),
+                                        ),
+                                        const SizedBox(
+                                          width: 15,
+                                        ),
+                                        DropdownButton(
+                                          items: _listaDocentes.map((String a) {
+                                            return DropdownMenuItem(
+                                                value: a, child: Text(a));
+                                          }).toList(),
+                                          onChanged: (text) => {
+                                            setState(() {
+                                              _vistaDocente = text.toString();
+                                            })
+                                          },
+                                          hint: Text(_vistaDocente),
+                                        ),
+                                      ],
                                     ),
-                                    child: TextFormField(),
                                   ),
-                                ],
-                              ),
-                            ],
-                          ),
-                          const SizedBox(
-                            height: 30,
-                          ),
-                          Row(
-                            mainAxisSize: MainAxisSize.max,
-                            mainAxisAlignment: MainAxisAlignment.start,
-                            children: <Widget>[
-                              Container(
-                                padding: const EdgeInsets.only(left: 20, right: 20, top: 10, bottom: 10),
-                                width: 120,
-                                decoration: BoxDecoration(
-                                  borderRadius: BorderRadius.circular(15.0),
-                                  color: const Color(0xFF01325E),
-                                ),
-                                child: const Text(
-                                  'Materia',
-                                  style: TextStyle(
-                                    fontSize: 18,
-                                    color: Colors.white,
-                                  ),
-                                  textAlign: TextAlign.center,
-                                ),
-                              ),
-                              const SizedBox(
-                                width: 15,
-                              ),
-                              DropdownButton(
-                                items: _listaMateria.map((String a) {
-                                  return DropdownMenuItem(
-                                      value: a, child: Text(a));
-                                }).toList(),
-                                onChanged: (text) => {
-                                  setState(() {
-                                    _vistaMateria = text.toString();
-                                  })
-                                },
-                                hint: Text(_vistaMateria),
-                              ),
-                              const SizedBox(
-                                width: 150,
-                              ),
-                              Container(
-                                padding: const EdgeInsets.only(left: 20, right: 20, top: 10, bottom: 10),
-                                width: 120,
-                                decoration: BoxDecoration(
-                                  borderRadius: BorderRadius.circular(15.0),
-                                  color: const Color(0xFF01325E),
-                                ),
-                                child: const Text(
-                                  'Software',
-                                  style: TextStyle(
-                                    fontSize: 18,
-                                    color: Colors.white,
-                                  ),
-                                  textAlign: TextAlign.center,
-                                ),
-                              ),
-                              const SizedBox(
-                                width: 15,
-                              ),
-                              Column(
-                                crossAxisAlignment: CrossAxisAlignment.start,
-                                children: <Widget>[
+                                  const SizedBox(height: 20,),
                                   Container(
-                                    width: 250,
-                                    height: 40,
-                                    alignment: Alignment.center,
-                                    padding: const EdgeInsets.all(10.0),
-                                    decoration: BoxDecoration(
-                                      borderRadius:
-                                      BorderRadius.circular(15.0),
-                                      color: Colors.white,
+                                    width: 460,
+                                    child: Row(
+                                      children: [
+                                        Container(
+                                          padding: const EdgeInsets.only(
+                                              left: 20, right: 20, top: 10, bottom: 10),
+                                          width: 120,
+                                          decoration: BoxDecoration(
+                                            borderRadius: BorderRadius.circular(15.0),
+                                            color: const Color(0xFF01325E),
+                                          ),
+                                          child: const Text(
+                                            'Alumnos',
+                                            style: TextStyle(
+                                              fontSize: 18,
+                                              color: Colors.white,
+                                            ),
+                                            textAlign: TextAlign.center,
+                                          ),
+                                        ),
+                                        const SizedBox(
+                                          width: 15,
+                                        ),
+                                        Column(
+                                          crossAxisAlignment: CrossAxisAlignment.start,
+                                          children: <Widget>[
+                                            Container(
+                                              width: 320,
+                                              height: 40,
+                                              alignment: Alignment.center,
+                                              padding: const EdgeInsets.all(10.0),
+                                              decoration: BoxDecoration(
+                                                borderRadius:
+                                                BorderRadius.circular(15.0),
+                                                color: Colors.white,
+                                              ),
+                                              child: TextFormField(),
+                                            ),
+                                          ],
+                                        ),
+                                      ],
                                     ),
-                                    child: TextFormField(),
                                   ),
+                                  const SizedBox(height: 20,),
+                                  Container(
+                                    width: 460,
+                                    child: Row(
+                                      children: [
+                                        Container(
+                                          padding: const EdgeInsets.only(left: 20, right: 20, top: 10, bottom: 10),
+                                          width: 120,
+                                          decoration: BoxDecoration(
+                                            borderRadius: BorderRadius.circular(15.0),
+                                            color: const Color(0xFF01325E),
+                                          ),
+                                          child: const Text(
+                                            'Software',
+                                            style: TextStyle(
+                                              fontSize: 18,
+                                              color: Colors.white,
+                                            ),
+                                            textAlign: TextAlign.center,
+                                          ),
+                                        ),
+                                        const SizedBox(
+                                          width: 15,
+                                        ),
+                                        Column(
+                                          crossAxisAlignment: CrossAxisAlignment.start,
+                                          children: <Widget>[
+                                            Container(
+                                              width: 320,
+                                              height: 40,
+                                              alignment: Alignment.center,
+                                              padding: const EdgeInsets.all(10.0),
+                                              decoration: BoxDecoration(
+                                                borderRadius:
+                                                BorderRadius.circular(15.0),
+                                                color: Colors.white,
+                                              ),
+                                              child: TextFormField(),
+                                            ),
+                                          ],
+                                        ),
+                                      ],
+                                    ),
+                                  ),
+                                  const SizedBox(height: 20,),
+                                  Container(
+                                    width: 460,
+                                    child: Row(
+                                      children: [
+                                        Container(
+                                          padding: const EdgeInsets.only(left: 20, right: 20, top: 10, bottom: 10),
+                                          width: 120,
+                                          decoration: BoxDecoration(
+                                            borderRadius: BorderRadius.circular(15.0),
+                                            color: const Color(0xFF01325E),
+                                          ),
+                                          child: const Text(
+                                            'Horario',
+                                            style: TextStyle(
+                                              fontSize: 18,
+                                              color: Colors.white,
+                                            ),
+                                            textAlign: TextAlign.center,
+                                          ),
+                                        ),
+                                        const SizedBox(
+                                          width: 15,
+                                        ),
+                                        const Text(
+                                          'Desde',
+                                          style: TextStyle(
+                                            fontSize: 14,
+                                            color: Colors.black,
+                                          ),
+                                        ),
+                                        const SizedBox(
+                                          width: 15,
+                                        ),
+                                        DropdownButton(
+                                          items: _listaDesde.map((String a) {
+                                            return DropdownMenuItem(
+                                                value: a, child: Text(a));
+                                          }).toList(),
+                                          onChanged: (text) => {
+                                            setState(() {
+                                              _vistaDesde = text.toString();
+                                            })
+                                          },
+                                          hint: Text(_vistaDesde),
+                                        ),
+                                        const SizedBox(
+                                          width: 15,
+                                        ),
+                                        const Text(
+                                          'Hasta',
+                                          style: TextStyle(
+                                            fontSize: 14,
+                                            color: Colors.black,
+                                          ),
+                                        ),
+                                        const SizedBox(
+                                          width: 15,
+                                        ),
+                                        DropdownButton(
+                                          items: _listaHasta.map((String a) {
+                                            return DropdownMenuItem(
+                                                value: a, child: Text(a));
+                                          }).toList(),
+                                          onChanged: (text) => {
+                                            setState(() {
+                                              _vistaHasta = text.toString();
+                                            })
+                                          },
+                                          hint: Text(_vistaHasta),
+                                        ),
+                                      ],
+                                    ),
+                                  ),
+
                                 ],
-                              ),
+                              )
                             ],
                           ),
-                          const SizedBox(
-                            height: 30,
-                          ),
-                          Row(
-                            mainAxisSize: MainAxisSize.max,
-                            mainAxisAlignment: MainAxisAlignment.start,
-                            children: <Widget>[
-                              Container(
-                                padding: const EdgeInsets.only(left: 20, right: 20, top: 10, bottom: 10),
-                                width: 120,
-                                decoration: BoxDecoration(
-                                  borderRadius: BorderRadius.circular(15.0),
-                                  color: const Color(0xFF01325E),
-                                ),
-                                child: const Text(
-                                  'Grupo',
-                                  style: TextStyle(
-                                    fontSize: 18,
-                                    color: Colors.white,
-                                  ),
-                                  textAlign: TextAlign.center,
-                                ),
-                              ),
-                              const SizedBox(
-                                width: 15,
-                              ),
-                              DropdownButton(
-                                items: _listaGrupos.map((String a) {
-                                  return DropdownMenuItem(
-                                      value: a, child: Text(a));
-                                }).toList(),
-                                onChanged: (text) => {
-                                  setState(() {
-                                    _vistaGrupo = text.toString();
-                                  })
-                                },
-                                hint: Text(_vistaGrupo),
-                              ),
-                              const SizedBox(
-                                width: 180,
-                              ),
-                              Container(
-                                padding: const EdgeInsets.only(left: 20, right: 20, top: 10, bottom: 10),
-                                width: 120,
-                                decoration: BoxDecoration(
-                                  borderRadius: BorderRadius.circular(15.0),
-                                  color: const Color(0xFF01325E),
-                                ),
-                                child: const Text(
-                                  'Horario',
-                                  style: TextStyle(
-                                    fontSize: 18,
-                                    color: Colors.white,
-                                  ),
-                                  textAlign: TextAlign.center,
-                                ),
-                              ),
-                              const SizedBox(
-                                width: 15,
-                              ),
-                              const Text(
-                                'Desde',
-                                style: TextStyle(
-                                fontSize: 14,
-                                color: Colors.black,
-                                ),
-                              ),
-                              const SizedBox(
-                                width: 15,
-                              ),
-                              DropdownButton(
-                                items: _listaDesde.map((String a) {
-                                  return DropdownMenuItem(
-                                      value: a, child: Text(a));
-                                }).toList(),
-                                onChanged: (text) => {
-                                  setState(() {
-                                    _vistaDesde = text.toString();
-                                  })
-                                },
-                                hint: Text(_vistaDesde),
-                              ),
-                              const SizedBox(
-                                width: 15,
-                              ),
-                              const Text(
-                                'Hasta',
-                                style: TextStyle(
-                                  fontSize: 14,
-                                  color: Colors.black,
-                                ),
-                              ),
-                              const SizedBox(
-                                width: 15,
-                              ),
-                              DropdownButton(
-                                items: _listaHasta.map((String a) {
-                                  return DropdownMenuItem(
-                                      value: a, child: Text(a));
-                                }).toList(),
-                                onChanged: (text) => {
-                                  setState(() {
-                                    _vistaHasta = text.toString();
-                                  })
-                                },
-                                hint: Text(_vistaHasta),
-                              ),
-                            ],
-                          ),
+
                           const SizedBox(
                             height: 100,
                           ),
