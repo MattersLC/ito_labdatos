@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:ito_laboratorio_bdatos/src/screens/control_panel_page.dart';
 import 'package:ito_laboratorio_bdatos/src/screens/home_page.dart';
 import 'package:ito_laboratorio_bdatos/src/screens/login_page.dart';
 import 'package:ito_laboratorio_bdatos/src/screens/nueva_practica_page.dart';
@@ -20,7 +21,8 @@ class MyApp extends StatelessWidget {
       routes: {
         '/': (BuildContext context) => const LoginPage(),
         '/homePage': (BuildContext context) => const HomePage(),
-        '/nuevaPracticaPage': (BuildContext context) => const NewPractice()
+        '/nuevaPracticaPage': (BuildContext context) => const NewPractice(),
+        '/controlPanelPage': (BuildContext context) => const ControlPanel()
       },
     );
   }

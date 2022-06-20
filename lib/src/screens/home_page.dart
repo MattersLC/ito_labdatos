@@ -164,7 +164,7 @@ class _HomePageState extends State<HomePage> {
                       ),
                       ElevatedButton(
                           style: _elevatedButtonStyle(context),
-                          onPressed: () {},
+                          onPressed: () => _controlPanel(context),
                           child: const Text('Panel de control')),
                       const SizedBox(
                         width: 40,
@@ -421,5 +421,9 @@ class _HomePageState extends State<HomePage> {
 
   void _addPractice(BuildContext context) {
     Navigator.of(context).pushNamed('/nuevaPracticaPage');
+  }
+
+  void _controlPanel(BuildContext context) {
+    Navigator.of(context).pushNamed('/controlPanelPage');
   }
 }

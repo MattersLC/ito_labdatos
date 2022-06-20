@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:objectbox/objectbox.dart';
 
 class NewPractice extends StatefulWidget {
   const NewPractice({Key? key}) : super(key: key);
@@ -75,13 +76,35 @@ class _NewPracticeState extends State<NewPractice> {
     '21:00'
   ];
 
-  String _vistaFecha = 'Seleccione una opción';
+  String _vistaFecha = 'Seleccione una fecha';
   String _vistaDocente = 'Seleccione una opción';
   String _vistaCarrera = 'Seleccione una opción';
   String _vistaMateria = 'Seleccione una opción';
   String _vistaGrupo = 'Seleccione una opción';
   String _vistaDesde = 'Seleccione';
   String _vistaHasta = 'Seleccione';
+  late DateTime datel;
+  late String _chosenVal;
+  DateTime selectedDate = DateTime.now();
+  Future<Null> _selectDate(BuildContext context) async {
+    final DateTime? picked = await showDatePicker(
+        context: context,
+        initialDate: selectedDate,
+        firstDate: DateTime(2015, 8),
+        lastDate: DateTime(2101));
+    if (picked != null && picked != selectedDate)
+      setState(() {
+        selectedDate = picked;
+      });
+  }
+
+  //var _currentSelectedDate;
+  /*void callDatePicker() async {
+    var selectedDate = await getDatePickerWidget();
+    setState(() {
+      _currentSelectedDate = selectedDate;
+    });
+  }*/
 
   @override
   Widget build(BuildContext context) {
@@ -137,6 +160,18 @@ class _NewPracticeState extends State<NewPractice> {
                 const EdgeInsets.only(left: 60, right: 60, top: 30, bottom: 30),
             child: Column(
               children: <Widget>[
+                Row(
+                  crossAxisAlignment: CrossAxisAlignment.start,
+                  children: [
+                    TextButton(
+                        onPressed: () => _backToHome(context),
+                        child: const Text(
+                            '< Volver',
+                            style: TextStyle(fontSize: 20, color: Colors.black),
+                        )
+                    ),
+                  ],
+                ),
                 Row(
                   children: const <Widget>[
                     Expanded(
@@ -198,7 +233,26 @@ class _NewPracticeState extends State<NewPractice> {
                               const SizedBox(
                                 width: 15,
                               ),
-                              DropdownButton(
+                              DropdownButton<DateTime>(
+                                hint: Text(_vistaFecha),
+                                items: [
+                                  'Click aquí para seleccionar una fecha'
+                                ].map((e) => DropdownMenuItem<DateTime>(child: Text(e))).toList(),
+                                onChanged: (DateTime? value) {
+                                  setState(() {
+                                    showDatePicker(
+                                        context: context,
+                                        initialDate: DateTime.now(),
+                                        firstDate: DateTime(2022),
+                                        lastDate: DateTime(2027))
+                                        .then((date) {
+                                      setState(() {
+                                        datel = date!;
+                                      });
+                                    });
+                                  });
+                                }),
+                              /*DropdownButton(
                                 items: _listaFecha.map((String a) {
                                   return DropdownMenuItem(
                                       value: a, child: Text(a));
@@ -209,7 +263,7 @@ class _NewPracticeState extends State<NewPractice> {
                                   })
                                 },
                                 hint: Text(_vistaFecha),
-                              ),
+                              ),*/
                               const SizedBox(
                                 width: 160,
                               ),
@@ -547,5 +601,9 @@ class _NewPracticeState extends State<NewPractice> {
         borderRadius: BorderRadius.circular(20.0),
       ),
     );
+  }
+
+  void _backToHome(BuildContext context) {
+    Navigator.of(context).pushNamed('/homePage');
   }
 }
