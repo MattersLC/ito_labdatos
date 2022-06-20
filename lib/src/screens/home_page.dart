@@ -23,6 +23,7 @@ class _HomePageState extends State<HomePage> {
   ];
   String _vista = 'Seleccione una opción';
   String _vista2 = 'Seleccione una opción';
+  final double? columnSpacing = 50.0;
 
   @override
   Widget build(BuildContext context) {
@@ -75,7 +76,7 @@ class _HomePageState extends State<HomePage> {
         body: SingleChildScrollView(
           child: Container(
             padding:
-                const EdgeInsets.only(left: 60, right: 60, top: 30, bottom: 30),
+                const EdgeInsets.only(left: 40, right: 40, top: 30, bottom: 30),
             child: Column(
               children: <Widget>[
                 Row(
@@ -113,7 +114,7 @@ class _HomePageState extends State<HomePage> {
                             )),
                       ),
                       const SizedBox(
-                        width: 15,
+                        width: 10,
                       ),
                       DropdownButton(
                         items: _listaSemestres.map((String a) {
@@ -127,7 +128,7 @@ class _HomePageState extends State<HomePage> {
                         hint: Text(_vista),
                       ),
                       const SizedBox(
-                        width: 60,
+                        width: 20,
                       ),
                       Container(
                         padding: const EdgeInsets.only(
@@ -145,7 +146,7 @@ class _HomePageState extends State<HomePage> {
                         ),
                       ),
                       const SizedBox(
-                        width: 15,
+                        width: 10,
                       ),
                       DropdownButton(
                         items: _listaCarreras.map((String b) {
@@ -160,22 +161,19 @@ class _HomePageState extends State<HomePage> {
                       ),
                       //const SizedBox(width: 580,),
                       const SizedBox(
-                        width: 180,
+                        width: 20,
                       ),
                       ElevatedButton(
                           style: _elevatedButtonStyle(context),
                           onPressed: () => _controlPanel(context),
                           child: const Text('Panel de control')),
                       const SizedBox(
-                        width: 40,
-                      ),
-                      const SizedBox(
-                        width: 40,
+                        width: 20,
                       ),
                       ElevatedButton(
                           style: _elevatedButtonStyle(context),
                           onPressed: () => _addPractice(context),
-                          child: const Text('Agregar práctica'))
+                          child: const Text('Nueva práctica'))
                     ],
                   ),
                 ),
@@ -190,13 +188,15 @@ class _HomePageState extends State<HomePage> {
                       borderRadius: BorderRadius.circular(20),
                     ),
                     color: const Color(0xFFBAD1FF),
-                    child: DataTable(columns: [
+                    child: DataTable(
+                        columnSpacing: 20,
+                        columns: [
                       DataColumn(
                         label: Expanded(
                           child: Center(
                             child: Container(
                               padding: const EdgeInsets.only(
-                                  left: 20, right: 20, top: 10, bottom: 10),
+                                  left: 15, right: 15, top: 10, bottom: 10),
                               decoration: BoxDecoration(
                                 borderRadius: BorderRadius.circular(15.0),
                                 color: const Color(0xFF01325E),
@@ -215,7 +215,7 @@ class _HomePageState extends State<HomePage> {
                           child: Center(
                             child: Container(
                               padding: const EdgeInsets.only(
-                                  left: 20, right: 20, top: 10, bottom: 10),
+                                  left: 15, right: 15, top: 10, bottom: 10),
                               decoration: BoxDecoration(
                                 borderRadius: BorderRadius.circular(15.0),
                                 color: const Color(0xFF01325E),
@@ -234,7 +234,7 @@ class _HomePageState extends State<HomePage> {
                           child: Center(
                             child: Container(
                               padding: const EdgeInsets.only(
-                                  left: 20, right: 20, top: 10, bottom: 10),
+                                  left: 15, right: 15, top: 10, bottom: 10),
                               decoration: BoxDecoration(
                                 borderRadius: BorderRadius.circular(15.0),
                                 color: const Color(0xFF01325E),
@@ -253,7 +253,7 @@ class _HomePageState extends State<HomePage> {
                           child: Center(
                             child: Container(
                               padding: const EdgeInsets.only(
-                                  left: 20, right: 20, top: 10, bottom: 10),
+                                  left: 15, right: 15, top: 10, bottom: 10),
                               decoration: BoxDecoration(
                                 borderRadius: BorderRadius.circular(15.0),
                                 color: const Color(0xFF01325E),
@@ -272,7 +272,7 @@ class _HomePageState extends State<HomePage> {
                           child: Center(
                             child: Container(
                               padding: const EdgeInsets.only(
-                                  left: 20, right: 20, top: 10, bottom: 10),
+                                  left: 15, right: 15, top: 10, bottom: 10),
                               decoration: BoxDecoration(
                                 borderRadius: BorderRadius.circular(15.0),
                                 color: const Color(0xFF01325E),
@@ -291,7 +291,7 @@ class _HomePageState extends State<HomePage> {
                           child: Center(
                             child: Container(
                               padding: const EdgeInsets.only(
-                                  left: 20, right: 20, top: 10, bottom: 10),
+                                  left: 15, right: 15, top: 10, bottom: 10),
                               decoration: BoxDecoration(
                                 borderRadius: BorderRadius.circular(15.0),
                                 color: const Color(0xFF01325E),
@@ -310,7 +310,7 @@ class _HomePageState extends State<HomePage> {
                           child: Center(
                             child: Container(
                               padding: const EdgeInsets.only(
-                                  left: 20, right: 20, top: 10, bottom: 10),
+                                  left: 15, right: 15, top: 10, bottom: 10),
                               decoration: BoxDecoration(
                                 borderRadius: BorderRadius.circular(15.0),
                                 color: const Color(0xFF01325E),
@@ -329,7 +329,7 @@ class _HomePageState extends State<HomePage> {
                           child: Center(
                             child: Container(
                               padding: const EdgeInsets.only(
-                                  left: 20, right: 20, top: 10, bottom: 10),
+                                  left: 15, right: 15, top: 10, bottom: 10),
                               decoration: BoxDecoration(
                                 borderRadius: BorderRadius.circular(15.0),
                                 color: const Color(0xFF01325E),
@@ -346,7 +346,7 @@ class _HomePageState extends State<HomePage> {
                       DataColumn(
                         label: Container(
                           padding: const EdgeInsets.only(
-                              left: 20, right: 20, top: 10, bottom: 10),
+                              left: 15, right: 15, top: 10, bottom: 10),
                           decoration: BoxDecoration(
                             borderRadius: BorderRadius.circular(15.0),
                             color: const Color(0xFF01325E),
@@ -359,13 +359,12 @@ class _HomePageState extends State<HomePage> {
                         ),
                       )
                     ], rows: [
-                      DataRow(cells: [
+                      const DataRow(cells: [
                         DataCell(Center(child: Text('23/05/2022'))),
                         DataCell(Center(child: Text('Lunes'))),
                         DataCell(Center(child: Text('07:00 - 08:00'))),
                         DataCell(Center(child: Text('SCD-2008-6SA'))),
-                        DataCell(
-                            Text('Ingeniería en Sistemas Computacionales')),
+                        DataCell(Text('Ingeniería en Sistemas Computacionales')),
                         DataCell(Text('Ingeniería de Software')),
                         DataCell(Text('Eduardo Castañón Olguín')),
                         DataCell(Center(child: Text('30'))),
