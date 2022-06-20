@@ -9,7 +9,6 @@ class ControlPanel extends StatefulWidget {
 }
 
 class _ControlPanelState extends State<ControlPanel> {
-  String _deleteIcon = Icon(Icons.delete, size: 30,) as String;
   @override
   Widget build(BuildContext context) {
     return MaterialApp(
