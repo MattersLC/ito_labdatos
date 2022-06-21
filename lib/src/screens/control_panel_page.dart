@@ -111,7 +111,19 @@ class _ControlPanelState extends State<ControlPanel> {
                             )
                           ]),
                           const SizedBox(
-                            height: 100,
+                            height: 50,
+                          ),
+                          Row(
+                            children: <Widget>[
+                              ElevatedButton(
+                                  onPressed: () => _createUser(context),
+                                  style: _elevatedButtonStyle(context),
+                                  child: const Text('Crear nuevo usuario')
+                              )
+                            ],
+                          ),
+                          const SizedBox(
+                            height: 50,
                           ),
                           Row(
                             children: <Widget>[
@@ -157,9 +169,6 @@ class _ControlPanelState extends State<ControlPanel> {
                           const SizedBox(
                             height: 100,
                           ),
-                          const SizedBox(
-                            height: 70,
-                          ),
                         ],
                       ),
                     ),
@@ -186,5 +195,9 @@ class _ControlPanelState extends State<ControlPanel> {
 
   void _backToHome(BuildContext context) {
     Navigator.of(context).pushNamed('/homePage');
+  }
+
+  void _createUser(BuildContext context) {
+    Navigator.of(context).pushNamed('/createUserPage');
   }
 }
