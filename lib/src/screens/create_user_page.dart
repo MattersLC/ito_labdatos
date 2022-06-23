@@ -1,5 +1,9 @@
+/*
+* Autor: Orlando Lucero Camacho
+* Descripción: En este fichero podemos crear un nuevo usuario
+* Última modificación: 23-06-2022
+* */
 import 'package:flutter/material.dart';
-import 'package:objectbox/objectbox.dart';
 
 class CreateUser extends StatefulWidget {
   const CreateUser({Key? key}) : super(key: key);
@@ -14,75 +18,8 @@ class _CreateUserState extends State<CreateUser> {
     'Operador',
     'Supervisor'
   ];
-  final List<String> _listaDocentes = <String>[
-    'Benitez Quecha Claribel',
-    'Castañón Olguín Eduardo',
-    'García Martínez Raúl',
-    'Jiménez Halla Johann Francisco',
-    'Monzoy Ventre Elsie Fernanda'
-  ];
-  final List<String> _listaCarrera = <String>[
-    'Ingeniería en Sistemas Computacionales',
-    'Ingeniería Eléctrica',
-    'Ingeniería en Gestión Empresarial',
-    'Ingeniería Electrónica',
-    'Ingeniería Industrial'
-  ];
-  final List<String> _listaMateria = <String>[
-    'Ingeniería de software',
-    'Lenguajes de interfaz',
-    'Programación',
-    'Estructura de datos',
-    'Mercadotecnia electrónica'
-  ];
-  final List<String> _listaGrupos = <String>[
-    '6SB-SCC-1014',
-    'IEU-ELC-1022',
-    '3SB-SCD-1007',
-    '2GA-AEB-1082',
-    '7GA-AEB-1045',
-    'SCD-1008-6SA'
-  ];
-  final List<String> _listaDesde = <String>[
-    '07:00',
-    '08:00',
-    '09:00',
-    '10:00',
-    '11:00',
-    '12:00',
-    '13:00',
-    '14:00',
-    '15:00',
-    '16:00',
-    '17:00',
-    '18:00',
-    '19:00',
-    '20:00'
-  ];
-  final List<String> _listaHasta = <String>[
-    '08:00',
-    '09:00',
-    '10:00',
-    '11:00',
-    '12:00',
-    '13:00',
-    '14:00',
-    '15:00',
-    '16:00',
-    '17:00',
-    '18:00',
-    '19:00',
-    '20:00',
-    '21:00'
-  ];
 
   String _vistaRoles = 'Seleccione un rol';
-  String _vistaDocente = 'Seleccione una opción';
-  String _vistaCarrera = 'Seleccione una opción';
-  String _vistaMateria = 'Seleccione una opción';
-  String _vistaGrupo = 'Seleccione una opción';
-  String _vistaDesde = 'Seleccione';
-  String _vistaHasta = 'Seleccione';
   @override
   Widget build(BuildContext context) {
     return MaterialApp(

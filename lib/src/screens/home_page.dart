@@ -1,3 +1,11 @@
+/*
+* Autor: Orlando Lucero Camacho
+* Descripción: Este fichero es la ventana principal de nuestro proyecto,
+*              aquí mostramos el menú de opciones para los diferentes
+*              paneles y principalmente mostramos la tabla con las
+*              prácticas ya creadas.
+* Última modificación: 23-06-2022
+* */
 import 'package:flutter/material.dart';
 
 class HomePage extends StatefulWidget {

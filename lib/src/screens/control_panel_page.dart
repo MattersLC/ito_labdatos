@@ -1,5 +1,11 @@
+/*
+* Autor: Orlando Lucero Camacho
+* Descripción: Este fichero contiene el código de la ventana "panel de control"
+*              aquí sólo mostramos los usuarios actuales registrados y podemos
+*              crear nuevos usuarios
+* Última modificación: 23-06-2022
+* */
 import 'package:flutter/material.dart';
-import 'package:objectbox/objectbox.dart';
 
 class ControlPanel extends StatefulWidget {
   const ControlPanel({Key? key}) : super(key: key);
