@@ -422,6 +422,8 @@ class _CreateUserState extends State<CreateUser> {
                                         Container(
                                           padding: const EdgeInsets.only(left: 20, right: 20, top: 10, bottom: 10),
                                           width: 130,
+                                          height: 60,
+                                          alignment: Alignment.center,
                                           decoration: BoxDecoration(
                                             borderRadius: BorderRadius.circular(15.0),
                                             color: const Color(0xFF01325E),
@@ -443,7 +445,7 @@ class _CreateUserState extends State<CreateUser> {
                                           children: <Widget>[
                                             Container(
                                               width: 320,
-                                              height: 40,
+                                              height: 60,
                                               alignment: Alignment.center,
                                               padding: const EdgeInsets.all(10.0),
                                               decoration: BoxDecoration(
@@ -451,7 +453,19 @@ class _CreateUserState extends State<CreateUser> {
                                                 BorderRadius.circular(15.0),
                                                 color: Colors.white,
                                               ),
-                                              child: TextFormField(),
+                                              child: TextFormField(
+                                                style: const TextStyle(fontSize: 20),
+                                                decoration: const InputDecoration(
+                                                    hintText: 'Ej: 123456'
+                                                ),
+                                                autovalidateMode: AutovalidateMode.onUserInteraction,
+                                                validator: (value) {
+                                                  if (value == null || value.isEmpty) {
+                                                    return 'Por favor ingresa tu contraseña.';
+                                                  }
+                                                  return null;
+                                                },
+                                              ),
                                             ),
                                           ],
                                         ),

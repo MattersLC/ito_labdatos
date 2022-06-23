@@ -1,5 +1,9 @@
+/*
+* Autor: Orlando Lucero Camacho
+* Descripción: Este fichero contiene el código de la ventana "Agregar práctica"
+* Última modificación: 23-06-2022
+* */
 import 'package:flutter/material.dart';
-import 'package:objectbox/objectbox.dart';
 
 class NewPractice extends StatefulWidget {
   const NewPractice({Key? key}) : super(key: key);
@@ -9,13 +13,7 @@ class NewPractice extends StatefulWidget {
 }
 
 class _NewPracticeState extends State<NewPractice> {
-  final List<String> _listaDocentes = <String>[
-    'Benitez Quecha Claribel',
-    'Castañón Olguín Eduardo',
-    'García Martínez Raúl',
-    'Jiménez Halla Johann Francisco',
-    'Monzoy Ventre Elsie Fernanda'
-  ];
+  // Contenido de los DropdownButton -equivalente a combobox-
   final List<String> _listaCarrera = <String>[
     'Ingeniería en Sistemas Computacionales',
     'Ingeniería Eléctrica',
@@ -38,48 +36,50 @@ class _NewPracticeState extends State<NewPractice> {
     '7GA-AEB-1045',
     'SCD-1008-6SA'
   ];
+  final List<String> _listaDocentes = <String>[
+    'Benitez Quecha Claribel',
+    'Castañón Olguín Eduardo',
+    'García Martínez Raúl',
+    'Jiménez Halla Johann Francisco',
+    'Monzoy Ventre Elsie Fernanda'
+  ];
+  final List<String> _listaAlumnos = <String>[
+    '1', '2', '3', '4', '5', '6', '7', '8', '9', '10',
+    '11', '12', '13', '14', '15', '16', '17', '18', '19', '20',
+    '21', '22', '23', '24', '25', '26', '27', '28', '29', '30',
+    '31', '32', '33', '34', '35', '36', '37', '38', '39', '40',
+  ];
+  final List<String> _listaSoftware = <String>[
+    'Oracle',
+    'MySQL Workbench',
+    'PostgreSQL',
+    'XAMPP',
+    'phpMyAdmin',
+    'MariaDB',
+    'Ubuntu Server',
+    'Otro'
+  ];
   final List<String> _listaDesde = <String>[
-    '07:00',
-    '08:00',
-    '09:00',
-    '10:00',
-    '11:00',
-    '12:00',
-    '13:00',
-    '14:00',
-    '15:00',
-    '16:00',
-    '17:00',
-    '18:00',
-    '19:00',
-    '20:00'
+    '07:00', '08:00', '09:00', '10:00', '11:00', '12:00', '13:00',
+    '14:00', '15:00', '16:00', '17:00', '18:00', '19:00', '20:00'
   ];
   final List<String> _listaHasta = <String>[
-    '08:00',
-    '09:00',
-    '10:00',
-    '11:00',
-    '12:00',
-    '13:00',
-    '14:00',
-    '15:00',
-    '16:00',
-    '17:00',
-    '18:00',
-    '19:00',
-    '20:00',
-    '21:00'
+    '08:00', '09:00', '10:00', '11:00', '12:00', '13:00', '14:00',
+    '15:00', '16:00', '17:00', '18:00', '19:00', '20:00', '21:00'
   ];
 
+  // Mensaje por defecto al seleccionar un valor de los DropdownButtons
   String _vistaFecha = 'Seleccione una fecha';
-  String _vistaDocente = 'Seleccione una opción';
   String _vistaCarrera = 'Seleccione una opción';
   String _vistaMateria = 'Seleccione una opción';
   String _vistaGrupo = 'Seleccione una opción';
+  String _vistaDocente = 'Seleccione una opción';
+  String _vistaAlumnos = 'Seleccione una opción';
+  String _vistaSoftware = 'Seleccione una opción';
   String _vistaDesde = 'Seleccione';
   String _vistaHasta = 'Seleccione';
   late DateTime datel;
-  late String _chosenVal;
+  //late String _chosenVal;
   /*DateTime selectedDate = DateTime.now();
   Future<Null> _selectDate(BuildContext context) async {
     final DateTime? picked = await showDatePicker(
@@ -105,33 +105,16 @@ class _NewPracticeState extends State<NewPractice> {
   Widget build(BuildContext context) {
     return MaterialApp(
       debugShowCheckedModeBanner: false,
-      title: 'Material App',
       home: Scaffold(
         appBar: AppBar(
           backgroundColor: const Color(0xFF01325E),
-          //centerTitle: true,
           title: Row(
             crossAxisAlignment: CrossAxisAlignment.center,
             children: [
               const Expanded(
                 child: Text(
-                  'INSTITUTO TECNOLÓGICO DE OAXACA',
-                  textAlign: TextAlign.end,
-                  style: TextStyle(
-                    color: Colors.white,
-                    fontSize: 32,
-                  ),
-                ),
-              ),
-              const SizedBox(
-                width: 50,
-              ),
-              const Expanded(
-                child: Text(
-                  '     | LABORATORIO DE BASE DE DATOS',
-                  //'INSTITUTO TECNOLÓGICO DE OAXACA',
-                  textAlign: TextAlign.start,
-                  //textAlign: TextAlign.center,
+                  'INSTITUTO TECNOLÓGICO DE OAXACA       |       LABORATORIO DE BASE DE DATOS',
+                  textAlign: TextAlign.center,
                   style: TextStyle(
                     color: Colors.white,
                     fontSize: 32,
@@ -147,15 +130,14 @@ class _NewPracticeState extends State<NewPractice> {
               ),
             ],
           ),
-          centerTitle: true,
+          //centerTitle: true,
         ),
-        body: SingleChildScrollView(
+        body: SingleChildScrollView( // Volvemos scrolleable nuestra ventana principal
           child: Container(
-            padding:
-                const EdgeInsets.only(left: 60, right: 60, top: 30, bottom: 30),
+            padding: const EdgeInsets.only(left: 60, right: 60, top: 30, bottom: 30),
             child: Column(
               children: <Widget>[
-                Row(
+                Row( // Agregamos el botón para volver a la ventana principal
                   crossAxisAlignment: CrossAxisAlignment.start,
                   children: [
                     TextButton(
@@ -167,7 +149,7 @@ class _NewPracticeState extends State<NewPractice> {
                     ),
                   ],
                 ),
-                Row(
+                Row( // Título de esta ventana
                   children: const <Widget>[
                     Expanded(
                       child: Text(
@@ -183,7 +165,7 @@ class _NewPracticeState extends State<NewPractice> {
                 const SizedBox(
                   height: 20,
                 ),
-                SingleChildScrollView(
+                SingleChildScrollView( // Hacemos scrolleable horizontalmente el menú para agregar datos
                   scrollDirection: Axis.horizontal,
                   child: Card(
                     elevation: 10,
@@ -208,7 +190,7 @@ class _NewPracticeState extends State<NewPractice> {
                             children: <Widget>[
                               Column(
                                 children: <Widget>[
-                                  Container(
+                                  SizedBox(
                                     width: 500,
                                     child: Row(
                                       children: [
@@ -234,7 +216,7 @@ class _NewPracticeState extends State<NewPractice> {
                                         DropdownButton<DateTime>(
                                             hint: Text(_vistaFecha),
                                             items: [
-                                              'Click aquí para seleccionar una fecha'
+                                              _vistaFecha
                                             ].map((e) => DropdownMenuItem<DateTime>(child: Text(e))).toList(),
                                             onChanged: (DateTime? value) {
                                               setState(() {
@@ -254,7 +236,7 @@ class _NewPracticeState extends State<NewPractice> {
                                     ),
                                   ),
                                   const SizedBox(height: 20,),
-                                  Container(
+                                  SizedBox(
                                     width: 500,
                                     child: Row(
                                       children: [
@@ -293,7 +275,7 @@ class _NewPracticeState extends State<NewPractice> {
                                     ),
                                   ),
                                   const SizedBox(height: 20,),
-                                  Container(
+                                  SizedBox(
                                     width: 500,
                                     child: Row(
                                       children: [
@@ -332,7 +314,7 @@ class _NewPracticeState extends State<NewPractice> {
                                     ),
                                   ),
                                   const SizedBox(height: 20,),
-                                  Container(
+                                  SizedBox(
                                     width: 500,
                                     child: Row(
                                       children: [
@@ -376,7 +358,7 @@ class _NewPracticeState extends State<NewPractice> {
                                 mainAxisAlignment: MainAxisAlignment.start,
                                 crossAxisAlignment: CrossAxisAlignment.start,
                                 children: <Widget>[
-                                  Container(
+                                  SizedBox(
                                     width: 420,
                                     child: Row(
                                       children: [
@@ -415,7 +397,7 @@ class _NewPracticeState extends State<NewPractice> {
                                     ),
                                   ),
                                   const SizedBox(height: 20,),
-                                  Container(
+                                  SizedBox(
                                     width: 460,
                                     child: Row(
                                       children: [
@@ -439,28 +421,23 @@ class _NewPracticeState extends State<NewPractice> {
                                         const SizedBox(
                                           width: 15,
                                         ),
-                                        Column(
-                                          crossAxisAlignment: CrossAxisAlignment.start,
-                                          children: <Widget>[
-                                            Container(
-                                              width: 320,
-                                              height: 40,
-                                              alignment: Alignment.center,
-                                              padding: const EdgeInsets.all(10.0),
-                                              decoration: BoxDecoration(
-                                                borderRadius:
-                                                BorderRadius.circular(15.0),
-                                                color: Colors.white,
-                                              ),
-                                              child: TextFormField(),
-                                            ),
-                                          ],
+                                        DropdownButton(
+                                          items: _listaAlumnos.map((String a) {
+                                            return DropdownMenuItem(
+                                                value: a, child: Text(a));
+                                          }).toList(),
+                                          onChanged: (text) => {
+                                            setState(() {
+                                              _vistaAlumnos = text.toString();
+                                            })
+                                          },
+                                          hint: Text(_vistaAlumnos),
                                         ),
                                       ],
                                     ),
                                   ),
                                   const SizedBox(height: 20,),
-                                  Container(
+                                  SizedBox(
                                     width: 460,
                                     child: Row(
                                       children: [
@@ -483,28 +460,23 @@ class _NewPracticeState extends State<NewPractice> {
                                         const SizedBox(
                                           width: 15,
                                         ),
-                                        Column(
-                                          crossAxisAlignment: CrossAxisAlignment.start,
-                                          children: <Widget>[
-                                            Container(
-                                              width: 320,
-                                              height: 40,
-                                              alignment: Alignment.center,
-                                              padding: const EdgeInsets.all(10.0),
-                                              decoration: BoxDecoration(
-                                                borderRadius:
-                                                BorderRadius.circular(15.0),
-                                                color: Colors.white,
-                                              ),
-                                              child: TextFormField(),
-                                            ),
-                                          ],
+                                        DropdownButton(
+                                          items: _listaSoftware.map((String a) {
+                                            return DropdownMenuItem(
+                                                value: a, child: Text(a));
+                                          }).toList(),
+                                          onChanged: (text) => {
+                                            setState(() {
+                                              _vistaSoftware = text.toString();
+                                            })
+                                          },
+                                          hint: Text(_vistaSoftware),
                                         ),
                                       ],
                                     ),
                                   ),
                                   const SizedBox(height: 20,),
-                                  Container(
+                                  SizedBox(
                                     width: 460,
                                     child: Row(
                                       children: [
