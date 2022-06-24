@@ -8,6 +8,9 @@
 * */
 import 'package:flutter/material.dart';
 
+import '../models/db.dart';
+import '../models/practica.dart';
+
 class HomePage extends StatefulWidget {
   const HomePage({Key? key}) : super(key: key);
 
@@ -32,38 +35,36 @@ class _HomePageState extends State<HomePage> {
   String _vista = 'Seleccione una opción';
   String _vista2 = 'Seleccione una opción';
   final double? columnSpacing = 50.0;
+  List<Practica> practicas = [];
+
+  @override
+  void initState() {
+    cargaPracticas();
+    super.initState();
+  }
+
+  cargaPracticas() async {
+    List<Practica> auxPractica = await DB.practicas();
+
+    setState(() {
+      practicas = auxPractica;
+    });
+  }
 
   @override
   Widget build(BuildContext context) {
     return MaterialApp(
       debugShowCheckedModeBanner: false,
-      title: 'Material App',
       home: Scaffold(
         appBar: AppBar(
           backgroundColor: const Color(0xFF01325E),
-          //centerTitle: true,
           title: Row(
             crossAxisAlignment: CrossAxisAlignment.center,
             children: [
               const Expanded(
                 child: Text(
-                  'INSTITUTO TECNOLÓGICO DE OAXACA',
-                  textAlign: TextAlign.end,
-                  style: TextStyle(
-                    color: Colors.white,
-                    fontSize: 32,
-                  ),
-                ),
-              ),
-              const SizedBox(
-                width: 50,
-              ),
-              const Expanded(
-                child: Text(
-                  '     | LABORATORIO DE BASE DE DATOS',
-                  //'INSTITUTO TECNOLÓGICO DE OAXACA',
-                  textAlign: TextAlign.start,
-                  //textAlign: TextAlign.center,
+                  'INSTITUTO TECNOLÓGICO DE OAXACA       |       LABORATORIO DE BASE DE DATOS',
+                  textAlign: TextAlign.center,
                   style: TextStyle(
                     color: Colors.white,
                     fontSize: 32,
@@ -79,7 +80,6 @@ class _HomePageState extends State<HomePage> {
               ),
             ],
           ),
-          centerTitle: true,
         ),
         body: SingleChildScrollView(
           child: Container(
@@ -392,7 +392,8 @@ class _HomePageState extends State<HomePage> {
                       _dataRow()
                     ]),
                   ),
-                )
+                ),
+                //Text('${practicas[0].software}')
               ],
             ),
           ),

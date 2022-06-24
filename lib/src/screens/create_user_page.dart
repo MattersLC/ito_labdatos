@@ -34,23 +34,8 @@ class _CreateUserState extends State<CreateUser> {
             children: [
               const Expanded(
                 child: Text(
-                  'INSTITUTO TECNOLÓGICO DE OAXACA',
-                  textAlign: TextAlign.end,
-                  style: TextStyle(
-                    color: Colors.white,
-                    fontSize: 32,
-                  ),
-                ),
-              ),
-              const SizedBox(
-                width: 50,
-              ),
-              const Expanded(
-                child: Text(
-                  '     | LABORATORIO DE BASE DE DATOS',
-                  //'INSTITUTO TECNOLÓGICO DE OAXACA',
-                  textAlign: TextAlign.start,
-                  //textAlign: TextAlign.center,
+                  'INSTITUTO TECNOLÓGICO DE OAXACA       |       LABORATORIO DE BASE DE DATOS',
+                  textAlign: TextAlign.center,
                   style: TextStyle(
                     color: Colors.white,
                     fontSize: 32,

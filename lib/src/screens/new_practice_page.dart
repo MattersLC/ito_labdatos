@@ -4,6 +4,10 @@
 * Última modificación: 23-06-2022
 * */
 import 'package:flutter/material.dart';
+import 'package:intl/intl.dart';
+import 'package:ito_laboratorio_bdatos/src/models/practica.dart';
+
+import '../models/db.dart';
 
 class NewPractice extends StatefulWidget {
   const NewPractice({Key? key}) : super(key: key);
@@ -78,31 +82,15 @@ class _NewPracticeState extends State<NewPractice> {
   String _vistaSoftware = 'Seleccione una opción';
   String _vistaDesde = 'Seleccione';
   String _vistaHasta = 'Seleccione';
-  late DateTime datel;
-  //late String _chosenVal;
-  /*DateTime selectedDate = DateTime.now();
-  Future<Null> _selectDate(BuildContext context) async {
-    final DateTime? picked = await showDatePicker(
-        context: context,
-        initialDate: selectedDate,
-        firstDate: DateTime(2015, 8),
-        lastDate: DateTime(2101));
-    if (picked != null && picked != selectedDate)
-      setState(() {
-        selectedDate = picked;
-      });
-  }*/
-
-  //var _currentSelectedDate;
-  /*void callDatePicker() async {
-    var selectedDate = await getDatePickerWidget();
-    setState(() {
-      _currentSelectedDate = selectedDate;
-    });
-  }*/
+  // Variables para registrar la fecha en la que se desea guardar una práctica
+  DateTime _selectedDate = DateTime.now();
+  String _dayName = '';
+  // Variable para recuperar las practicas creadas de la BD
+  late Practica? practica;
 
   @override
   Widget build(BuildContext context) {
+    practica = ModalRoute.of(context)?.settings.arguments as Practica?;
     return MaterialApp(
       debugShowCheckedModeBanner: false,
       home: Scaffold(
@@ -227,11 +215,18 @@ class _NewPracticeState extends State<NewPractice> {
                                                     lastDate: DateTime(2027))
                                                     .then((date) {
                                                   setState(() {
-                                                    datel = date!;
+                                                    _selectedDate = date!;
+                                                    _vistaFecha = '${_selectedDate.year}/${_selectedDate.month}/${_selectedDate.day}';
+                                                    _dayName = '${DateFormat('EEEE').format(date)}';
+                                                    changeDayName(_dayName);
                                                   });
                                                 });
                                               });
                                             }),
+                                        const SizedBox(
+                                          width: 15,
+                                        ), 
+                                        Text('${_dayName}')
                                       ],
                                     ),
                                   ),
@@ -559,7 +554,7 @@ class _NewPracticeState extends State<NewPractice> {
                           ),
                           ElevatedButton(
                               style: _elevatedButtonStyle(context),
-                              onPressed: () {},
+                              onPressed: () => _verifyData(context),
                               child: const Text('AGREGAR PRÁCTICA')
                           ),
                           const SizedBox(
@@ -591,5 +586,47 @@ class _NewPracticeState extends State<NewPractice> {
 
   void _backToHome(BuildContext context) {
     Navigator.of(context).pushNamed('/homePage');
+  }
+
+  void changeDayName(String dayName) {
+    switch (dayName) {
+      case 'Sunday':
+        _dayName = 'Domingo';
+        break;
+      case 'Monday':
+        _dayName = 'Lunes';
+        break;
+      case 'Tuesday':
+        _dayName = 'Martes';
+        break;
+      case 'Wednesday':
+        _dayName = 'Miércoles';
+        break;
+      case 'Thursday':
+        _dayName = 'Jueves';
+        break;
+      case 'Friday':
+        _dayName = 'Viernes';
+        break;
+      case 'Saturday':
+        _dayName = 'Sábado';
+        break;
+      case '':
+        break;
+      default:
+        break;
+    }
+  }
+
+  void _verifyData(BuildContext context) {
+    String fecha = 'Seleccione una fecha';
+    String txt = 'Seleccione una opción';
+    String opt = 'Seleccione';
+    if (_vistaFecha != fecha && _vistaCarrera != txt && _vistaMateria != txt &&
+        _vistaGrupo != txt && _vistaDocente != txt && _vistaAlumnos != txt &&
+        _vistaSoftware != txt && _vistaDesde != opt && _vistaHasta != opt) {
+      print(Text('Todo ok'));
+      //practica
+    }
   }
 }
