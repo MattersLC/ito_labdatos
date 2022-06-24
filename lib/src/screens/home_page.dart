@@ -37,7 +37,7 @@ class _HomePageState extends State<HomePage> {
   final double? columnSpacing = 50.0;
   List<Practica> practicas = [];
 
-  @override
+  /*@override
   void initState() {
     cargaPracticas();
     super.initState();
@@ -49,7 +49,7 @@ class _HomePageState extends State<HomePage> {
     setState(() {
       practicas = auxPractica;
     });
-  }
+  }*/
 
   @override
   Widget build(BuildContext context) {

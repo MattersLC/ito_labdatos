@@ -42,7 +42,7 @@ class _NewPracticeState extends State<NewPractice> {
   ];
   final List<String> _listaDocentes = <String>[
     'Benitez Quecha Claribel',
-    'Castañón Olguín Eduardo',
+    'Castañon Olguin Eduardo',
     'García Martínez Raúl',
     'Jiménez Halla Johann Francisco',
     'Monzoy Ventre Elsie Fernanda'
@@ -90,7 +90,7 @@ class _NewPracticeState extends State<NewPractice> {
 
   @override
   Widget build(BuildContext context) {
-    practica = ModalRoute.of(context)?.settings.arguments as Practica?;
+    //practica = ModalRoute.of(context)?.settings.arguments as Practica?;
     return MaterialApp(
       debugShowCheckedModeBanner: false,
       home: Scaffold(
@@ -627,6 +627,12 @@ class _NewPracticeState extends State<NewPractice> {
         _vistaSoftware != txt && _vistaDesde != opt && _vistaHasta != opt) {
       print(Text('Todo ok'));
       //practica
+      DB.insert(Practica(id: 1, fecha: _vistaFecha, dia: _dayName,
+                         carrera: _vistaCarrera, materia: _vistaMateria,
+                         grupo: _vistaGrupo, docente: _vistaDocente,
+                         alumnos: int.parse(_vistaAlumnos),
+                         software: _vistaSoftware, desde: _vistaDesde,
+                         hasta: _vistaHasta));
     }
   }
 }
