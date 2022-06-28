@@ -30,7 +30,9 @@ dependencies:
   flutter:
     sdk: flutter
   # database Storage
-  sqflite: ^2.0.2+1
+  mysql1: ^0.19.2
+  http: ^0.13.4
+  #sqflite: ^2.0.2+1
   # format DateTime
   intl: ^0.17.0
   # The following adds the Cupertino Icons font to your application.

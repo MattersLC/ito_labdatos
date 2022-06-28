@@ -33,7 +33,7 @@ class Practica {
       materia: json['materia'] as String,
       docente: json['docente'] as String,
       alumnos: json['alumnos'] as int,
-      software: json['software'] as String
+      software: json['software'] as String,
     );
   }
 }

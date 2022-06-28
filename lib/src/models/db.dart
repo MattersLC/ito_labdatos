@@ -1,5 +1,5 @@
 import 'package:ito_laboratorio_bdatos/src/models/practica.dart';
-import 'package:sqflite/sqflite.dart';
+/*import 'package:sqflite/sqflite.dart';
 import 'package:path/path.dart';
 
 class DB {
@@ -71,4 +71,4 @@ class DB {
         "VALUES ()");
   }
 
-}
+}*/

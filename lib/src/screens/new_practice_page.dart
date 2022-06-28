@@ -5,7 +5,11 @@
 * */
 import 'package:flutter/material.dart';
 import 'package:intl/intl.dart';
+import 'package:ito_laboratorio_bdatos/src/models/data_base.dart';
 import 'package:ito_laboratorio_bdatos/src/models/practica.dart';
+import 'package:mysql1/mysql1.dart';
+import '../models/services.dart';
+import '../models/practicas.dart';
 
 import '../models/db.dart';
 
@@ -86,7 +90,7 @@ class _NewPracticeState extends State<NewPractice> {
   DateTime _selectedDate = DateTime.now();
   String _dayName = '';
   // Variable para recuperar las practicas creadas de la BD
-  late Practica? practica;
+  //late Practica? practica;
 
   @override
   Widget build(BuildContext context) {
@@ -622,17 +626,89 @@ class _NewPracticeState extends State<NewPractice> {
     String fecha = 'Seleccione una fecha';
     String txt = 'Seleccione una opción';
     String opt = 'Seleccione';
-    if (_vistaFecha != fecha && _vistaCarrera != txt && _vistaMateria != txt &&
-        _vistaGrupo != txt && _vistaDocente != txt && _vistaAlumnos != txt &&
-        _vistaSoftware != txt && _vistaDesde != opt && _vistaHasta != opt) {
-      print(Text('Todo ok'));
-      //practica
-      DB.insert(Practica(id: 1, fecha: _vistaFecha, dia: _dayName,
-                         carrera: _vistaCarrera, materia: _vistaMateria,
-                         grupo: _vistaGrupo, docente: _vistaDocente,
-                         alumnos: int.parse(_vistaAlumnos),
-                         software: _vistaSoftware, desde: _vistaDesde,
-                         hasta: _vistaHasta));
+    if (_vistaFecha != fecha &&
+        _vistaCarrera != txt &&
+        _vistaMateria != txt &&
+        _vistaGrupo != txt &&
+        _vistaDocente != txt &&
+        _vistaAlumnos != txt &&
+        _vistaSoftware != txt &&
+        _vistaDesde != opt &&
+        _vistaHasta != opt) {
+      //print(Text('Todo ok'));
+      //print(int.parse(_vistaAlumnos));
+      //insertData();
+      _addPractice();
     }
   }
+
+  void insertData() async {
+    //DataBase.connectionPracticas();
+    final conn = await MySqlConnection.connect(ConnectionSettings(
+        host: 'localhost',
+        port: 3306,
+        user: 'root',
+        db: 'laboratoriobd',
+        password: 'root'));
+
+    await Future.delayed(const Duration(milliseconds: 1000));
+
+    // Insert some data
+    var result = await conn.query(
+        'insert into practicas (fecha, dia, horario, grupo, carrera, materia, docente, alumnos, software) values (?, ?, ?, ?, ?, ?, ?, ?, ?)',
+        [
+          _vistaFecha,
+          _dayName,
+          '$_vistaDesde - $_vistaHasta',
+          _vistaGrupo,
+          _vistaCarrera,
+          _vistaMateria,
+          _vistaDocente,
+          int.parse(_vistaAlumnos),
+          _vistaSoftware,
+        ]);
+    print('Inserted row id=${result.insertId}');
+  }
+
+  // Now lets add an Employee
+  _addPractice() {
+    //_showProgress('Adding Employee...');
+    Services.addPractice(
+      _vistaFecha,
+      _dayName,
+      '$_vistaDesde - $_vistaHasta',
+      _vistaGrupo,
+      _vistaCarrera,
+      _vistaMateria,
+      _vistaDocente,
+      int.parse(_vistaAlumnos),
+      _vistaSoftware,)
+        .then((result) {
+      if ('success' == result) {
+        //_getPracticas(); // Refresh the List after adding each employee...
+        //_clearValues();
+        print('Inserted correctly');
+      }
+    });
+  }
+
+  /*_getPracticas() {
+    //_showProgress('Loading Practices...');
+    Services.getPractices().then((practicas) {
+      setState(() {
+        _practicas = practicas;
+        print("Length 1 ${_practicas.length}");
+        print("Length 2 ${practicas}");
+      });
+      _showProgress(widget.title); // Reset the title...
+      print("Length 3 ${_practicas.length}");
+    });
+  }*/
+
+  // Method to update title in the AppBar Title
+  /*_showProgress(String message) {
+    setState(() {
+      _titleProgress = message;
+    });
+  }*/
 }
